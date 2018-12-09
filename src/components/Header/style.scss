@@ -1,0 +1,20 @@
+.title-wrapper {
+  text-align: center;
+}
+
+.title {
+  font-size: 6em;
+  user-select: none;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 40px;
+  cursor: pointer;
+}

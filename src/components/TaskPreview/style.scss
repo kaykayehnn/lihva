@@ -1,0 +1,67 @@
+.task {
+  position: relative;
+  flex: 0 1 400px;
+  border: 1px solid transparent;
+  border-radius: 2%;
+  cursor: pointer;
+  transition: all 0.8s;
+}
+
+.task-pulse {
+  animation: pulse 0.5s ease-out 5.25s;
+}
+  
+.task:hover {
+  transform: scale(1.025);
+}
+
+.vector {
+  max-height: 150px;
+}
+
+.main-task {
+  margin: 10% auto;
+  max-width: 350px;
+  user-select: none;
+}
+
+.task:hover .main-task {
+  opacity: 1;
+}
+
+.cursor {
+  width: 45px;
+  position: absolute;
+  top: 10px;
+  left: -55%;
+  animation: click 5s ease-out 3s;
+}
+
+@keyframes click {
+  0% {
+    left: -55%;
+  }
+
+  40% {
+    left: 45%;
+  }
+
+  60% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    left: 45%;
+  }
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale(1.025);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

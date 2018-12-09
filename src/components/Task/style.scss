@@ -1,0 +1,132 @@
+$chartWidth: 900px;
+$chartHeight: 556px; // golden ratio (1.618)
+
+.container {
+  display: flex;
+  margin-top: 100px;
+  font-size: 1.5em;
+  justify-content: space-evenly;
+}
+
+.form {
+  flex: 0 1 auto;
+}
+
+.label {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.input-group {
+  display: inline;
+}
+
+.input-group:hover * {
+  border-bottom-color: rgba(0, 0, 0, 0.75);
+}
+
+.input:focus, .input:focus+.icon {
+  border-bottom-color: rgba(0, 0, 0, 1);
+}
+
+.input {
+  width: 160px;
+  padding: 0px;
+  margin-bottom: 15px;
+  font-size: 100%;
+  border: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+  border-radius: 0px;
+  outline: none;
+  background-image:none;
+  background-color:transparent;
+  box-shadow: none;
+}
+
+.icon {
+  display: inline-block;
+  user-select: none;
+  padding-bottom: 4px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+}
+
+.input, .icon {
+  transition: all 0.5s;
+}
+
+.result-container {
+  position: relative;
+  font-size: 1.5em;
+  margin: auto 0;
+  user-select: none;
+}
+
+.result-label {
+  text-align: center;
+  padding-bottom: 1.5em;
+}
+
+.result {
+  position: absolute;
+  top: 1.5em;
+  left: -100px;
+  right: -100px;
+
+  text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+  .result-container {
+    font-size: 1.25em;
+  }
+
+  .result {
+    left: -50px;
+    right: -50px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .container {
+    display: block;
+  }
+
+  .form {
+    text-align: center;
+  }
+
+  .result-container {
+    margin: 20px 0;
+  }
+}
+
+.profit {
+  color: #58D68D;
+}
+
+.hidden {
+  display: none;
+}
+
+.chart-wrapper {
+  margin: 0 auto 20px;
+  max-width: $chartWidth;
+}
+
+.chart-container {
+  position: relative;
+  padding-bottom: $chartHeight / $chartWidth * 100%;
+}
+
+.chart {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+:global(.tick) {
+  font-size: 1.2em;
+  user-select: none;
+}

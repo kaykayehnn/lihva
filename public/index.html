@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&amp;subset=cyrillic" rel="stylesheet">
+  <% for (var css in htmlWebpackPlugin.files.css) { %>
+    <link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
+  <% } %>
+
+  <script>
+    var modernBrowser = (
+      'assign' in Object
+    )
+
+    if (!modernBrowser) {
+      var scriptElement = document.createElement('script')
+
+      scriptElement.async = false
+      scriptElement.src = "<% print(htmlWebpackPlugin.files.chunks.polyfills.entry) %>"
+      document.head.appendChild(scriptElement)
+    }
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <% for (var file of htmlWebpackPlugin.files.js) { %>
+    <% if(file.slice(0, 'polyfills'.length) !== 'polyfills') {%>
+      <script src="<%= file %>"></script>
+    <% } %>
+  <% } %>
+</body>
+
+</html>
