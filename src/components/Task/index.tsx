@@ -98,20 +98,22 @@ export default class Task<T extends BaseState> extends PureComponent<TaskProps, 
 
   drawChart () {
     const { fields } = this.props
-
+    
+    const args = {}
     const params = fields.map(f => f.key)
     let valid = true
     for (let i = 0; i < params.length && valid; i++) {
       let field = fields[i]
       let value = this.state[field.key]
 
-      valid = field.validator.test(value) && value.length > 0 && +value > 0
+      const parsed = value.replace(",", ".");
+      valid = field.validator.test(parsed) && parsed.length > 0
+      args[field.key] = parsed
     }
 
     if (!valid) return
-
     this.drawnChart++
-    const data: number[] = this.props.dataFn(this.state)
+    const data: number[] = this.props.dataFn(args)
 
     const width = this.CHART_BOXWIDTH - (this.MARGIN.LEFT + this.MARGIN.RIGHT)
     const height = this.CHART_BOXHEIGHT - (this.MARGIN.TOP + this.MARGIN.BOTTOM)
@@ -271,7 +273,7 @@ export default class Task<T extends BaseState> extends PureComponent<TaskProps, 
               <div key={f.key}>
                 <label className={styles.label} htmlFor={f.key}>{f.label}</label>
                 <div className={styles.inputGroup}>
-                  <input className={styles.input} name={f.key} id={f.key} value={this.state[f.key]} onChange={this.handleChange} />
+                  <input className={styles.input} name={f.key} id={f.key} value={this.state[f.key]} onChange={this.handleChange} inputMode="decimal" />
                   <span className={styles.icon}>{f.icon}</span>
                 </div>
               </div>)
